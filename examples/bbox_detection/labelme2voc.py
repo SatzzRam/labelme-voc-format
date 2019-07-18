@@ -116,7 +116,8 @@ def main():
                 tmp = ymin
                 ymin = ymax
                 ymax = tmp
-                
+            
+            # need to write as int
             bboxes.append([int(xmin), int(ymin), int(xmax), int(ymax)])
             labels.append(class_id)
 
@@ -127,6 +128,7 @@ def main():
                     maker.truncated(),
                     maker.difficult(),
                     maker.bndbox(
+                        # need to write as int
                         maker.xmin(str(int(xmin))),
                         maker.ymin(str(int(ymin))),
                         maker.xmax(str(int(xmax))),
@@ -144,6 +146,7 @@ def main():
         with open(out_xml_file, 'wb') as f:
             f.write(lxml.etree.tostring(xml, pretty_print=True))
     
+    # write out trainfile.
     out_train_file = osp.join(
             args.output_dir, 'ImageSets/Main/trainval.txt')
     with open(out_train_file, 'w') as f:
