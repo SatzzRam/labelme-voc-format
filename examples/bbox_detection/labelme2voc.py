@@ -117,7 +117,7 @@ def main():
                 ymin = ymax
                 ymax = tmp
                 
-            bboxes.append([xmin, ymin, xmax, ymax])
+            bboxes.append([int(xmin), int(ymin), int(xmax), int(ymax)])
             labels.append(class_id)
 
             xml.append(
@@ -127,10 +127,10 @@ def main():
                     maker.truncated(),
                     maker.difficult(),
                     maker.bndbox(
-                        maker.xmin(str(xmin)),
-                        maker.ymin(str(ymin)),
-                        maker.xmax(str(xmax)),
-                        maker.ymax(str(ymax)),
+                        maker.xmin(str(int(xmin))),
+                        maker.ymin(str(int(ymin))),
+                        maker.xmax(str(int(xmax))),
+                        maker.ymax(str(int(ymax))),
                     ),
                 )
             )
